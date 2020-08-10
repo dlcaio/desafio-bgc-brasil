@@ -20,7 +20,7 @@ service: minion-store
 # frameworkVersion: "=X.X.X"
 
 custom:
-  tableName: 'minions-table-${self:provider.stage}'
+  tableName: 'minion-${self:provider.stage}'
 
 
 provider:
@@ -53,7 +53,7 @@ provider:
 
   environment:
 
-    USERS_TABLE: ${self:custom.tableName}
+    MINIONS_TABLE: ${self:custom.tableName}
 # you can overwrite defaults here
 #  stage: dev
 #  region: us-east-1
@@ -88,11 +88,26 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  getUser:
-    handler: getUser.getUser
+  getMinion:
+    handler: getMinion.getMinion
     events:
       - http:
-          path: user/{minionId}
+          path: minion/{minionId}
+          method: get
+          cors: true
+  postMinion:
+    handler: postMinion.postMinion
+    events:
+      - http:
+          path: minion
+          method: post
+          cors: true
+  
+  queryMinion:
+    handler: queryMinion.queryMinion
+    events:
+      - http:
+          path: query-minion
           method: get
           cors: true
 #    The following are a few example events you can configure
@@ -162,6 +177,11 @@ resources:
 
           -
 
+            AttributeName: booked
+
+            AttributeType: S
+          -
+
             AttributeName: minionId
 
             AttributeType: S
@@ -172,9 +192,14 @@ resources:
 
           -
 
-            AttributeName: minionId
+            AttributeName: booked
 
             KeyType: HASH
+          -
+
+            AttributeName: minionId
+
+            KeyType: RANGE
 
         ProvisionedThroughput:
 
