@@ -8,12 +8,26 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
 
-  if (action.type === 'REMOVE_MINION') {
+  if (action.type === 'ADD_TO_CHART') {
     console.log(state.minions)
     console.log(action.id)
-    return {minions: state.minions.filter(minion => 
-      minion.id !== action.id)}
+    return {
+      ...state, minions: state.minions.map(
+        minion => minion.id === action.id ? {...minion, onChart: true}  : minion 
+      )
+    }
   }
+
+  if (action.type === 'REMOVE_FROM_Chart') {
+    console.log(state.minions)
+    console.log(action.id)
+    return {
+      ...state, minions: state.minions.map(
+        minion => minion.id === action.id ? {...minion, onChart: false}  : minion 
+      )
+    }
+  }
+
   return state;
 };
 
