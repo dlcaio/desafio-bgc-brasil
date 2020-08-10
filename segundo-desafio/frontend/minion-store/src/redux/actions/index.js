@@ -1,7 +1,7 @@
-export function addToChart(id) {
-    return {type: 'ADD_TO_CHART', id}
+export function addToCart(id) {
+    return {type: 'ADD_TO_CART', id}
 }
 
-export function removeFromChart(id) {
-    return {type: 'REMOVE_FROM_Chart', id}
+export function removeFromCart(id) {
+    return {type: 'REMOVE_FROM_CART', id}
 }

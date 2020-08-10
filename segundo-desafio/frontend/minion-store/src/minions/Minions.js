@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-import { addToChart } from "../redux/actions/index";
+import { addToCart } from "../redux/actions/index";
 
 
 class Minions extends Component {
@@ -14,7 +14,7 @@ class Minions extends Component {
     }
 
     remove = id => {
-        this.props.addToChart(id)
+        this.props.addToCart(id)
     }
 
     render() {
@@ -24,7 +24,7 @@ class Minions extends Component {
                 
                 {minions.map(minion => (
                 <div key={minion.id}>
-                    {!minion.onChart ? (<div><li>Nome: {minion.name}</li>
+                    {!minion.onCart ? (<div><li>Nome: {minion.name}</li>
                     <li>Preço: {minion.price}</li>
                     <button onClick={() => (this.remove(minion.id))}>Adicionar ao carrinho</button></div>) : ''}
                 </div>
@@ -38,7 +38,7 @@ class Minions extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addToChart: id => dispatch(addToChart(id))
+        addToCart: id => dispatch(addToCart(id))
     }
   }
 
