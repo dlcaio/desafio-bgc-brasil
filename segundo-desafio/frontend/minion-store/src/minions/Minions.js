@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { addToCart } from "../redux/actions/index";
-
+import  './Minions.css'
 
 class Minions extends Component {
     constructor(props) {
@@ -20,13 +20,14 @@ class Minions extends Component {
     render() {
         const minions = this.props.minions
         return (
-            <ul>
-                
+            
+            <ul className='Minions'>
+                <h2 className='ourMinions'>Nossos Minions</h2>
                 {minions.map(minion => (
                 <div key={minion.id}>
-                    {!minion.onCart ? (<div><li>Nome: {minion.name}</li>
+                    {!minion.onCart ? (<div><li>{minion.name}</li>
                     <li>Preço: {minion.price}</li>
-                    <button onClick={() => (this.remove(minion.id))}>Adicionar ao carrinho</button></div>) : ''}
+                    <button className='addToCartBtn' onClick={() => (this.remove(minion.id))}>adicionar<br/>ao carrinho</button></div>) : ''}
                 </div>
                 ))}
 

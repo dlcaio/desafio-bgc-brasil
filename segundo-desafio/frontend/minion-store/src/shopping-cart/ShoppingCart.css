@@ -1,0 +1,29 @@
+
+
+.removeFromCartBtn {
+    background-color: white; /* Green */
+    border: none;
+    color: darkred;
+    margin: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+
+  }
+
+.removeFromCartBtn:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.Cart {
+    font-size: 40px;
+}
+
+li{
+    font-size: 24px;
+    color:black; 
+    display: grid;
+}
