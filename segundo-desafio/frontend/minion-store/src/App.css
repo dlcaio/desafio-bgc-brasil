@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+
+.OnAndOffCart {
+  display: flex;
+  justify-content: center;
+  min-height: 700px;
+}

@@ -8,7 +8,6 @@ module.exports.queryMinion = async event => {
     KeyConditionExpression: 'booked = :bkd',
     ExpressionAttributeValues: {
       ':bkd': 'false',
-      
     }
   }
   console.log(params)

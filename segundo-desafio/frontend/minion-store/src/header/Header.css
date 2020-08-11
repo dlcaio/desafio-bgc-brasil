@@ -1,0 +1,32 @@
+
+
+header {
+    padding-top: 16px;
+    padding-bottom: 6px;
+    display:grid;
+    margin: 0 auto;
+
+}
+
+.Logo {
+    display: grid;
+    border-bottom: 1px solid #000; 
+    
+    
+}
+
+header ul li {
+    display: inline-block;
+    margin: 0px 10px auto;
+    
+}
+
+header ul {
+    
+    width: 70%;
+    margin: 0 auto;
+    
+    
+}
+
+
