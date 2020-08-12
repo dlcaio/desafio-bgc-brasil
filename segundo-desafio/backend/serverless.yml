@@ -47,6 +47,8 @@ provider:
 
         - dynamodb:DeleteItem
 
+        - dynamodb:BatchWriteItem
+
       Resource:
 
         - { "Fn::GetAtt": ["MinionsDynamoDBTable", "Arn" ] }
@@ -109,6 +111,14 @@ functions:
       - http:
           path: query-minion
           method: get
+          cors: true
+
+  bookMinions:
+    handler: bookMinions.bookMinions
+    events:
+      - http:
+          path: bookMinions
+          method: post
           cors: true
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
