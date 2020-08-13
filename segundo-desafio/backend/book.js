@@ -2,6 +2,8 @@
 
 const dynamodb = require('./dynamodb');
 
+const ses = require('./ses');
+
 module.exports.book = async event => {
   
 
@@ -36,6 +38,40 @@ module.exports.book = async event => {
     }
   };
 
+
+
+  var emailLayout = `<!DOCTYPE html><html><head></head><body><h1>Obrigado pela reserva!</h1><p>Você reservou o(s) minion(s) ${dataList}, aproveite! : )</p></body></html>`
+
+  var emailParams = {
+        Destination: {
+            ToAddresses: ["caiodellalibera@id.uff.br"]
+        },
+        Message: {
+            Body: {
+                Html: { Data: emailLayout
+                  
+                }
+                
+            },
+            
+            Subject: { Data: "Test Email"
+                
+            }
+        },
+        Source: "caiodellalibera@id.uff.br"
+    };
+
+    
+
+
+
+
+
+
+
+
+
+
   
 
   /*
@@ -68,6 +104,15 @@ module.exports.book = async event => {
   //minions.forEach(minion => {
     try {
         const respData = await dynamodb.batchWrite(params).promise()
+        try {
+          
+          const emailResp = await ses.sendEmail(emailParams).promise()
+          console.log(emailResp)
+    
+        } catch (err) {
+          console.log(err)
+        }
+
         const code = 200
         const body = JSON.stringify(params)
         return {

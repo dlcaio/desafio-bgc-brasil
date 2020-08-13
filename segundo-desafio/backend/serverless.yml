@@ -53,6 +53,16 @@ provider:
 
         - { "Fn::GetAtt": ["MinionsDynamoDBTable", "Arn" ] }
 
+    - Effect: Allow
+
+      Action:
+        
+        - ses:SendEmail
+
+        - ses:SendRawEmail
+      Resource:
+        - "*"
+
   environment:
 
     MINIONS_TABLE: ${self:custom.tableName}
