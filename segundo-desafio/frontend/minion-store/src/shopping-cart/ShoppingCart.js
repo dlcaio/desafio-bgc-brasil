@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-import { removeFromCart } from "../redux/actions/index";
+import { removeFromCart, bookMinions } from "../redux/actions/index";
 
 import './ShoppingCart.css'
 
@@ -15,12 +15,14 @@ class ShoppingCart extends Component {
         }
     }
 
+
     remove = id => {
         this.props.removeFromCart(id)
     }
 
     render() {
         const minions = this.props.minions
+
         return (
             <ul className='MinionOnCart'>
                 <h2 className='Cart'>Carrinho</h2>
@@ -28,10 +30,13 @@ class ShoppingCart extends Component {
                 
                 <div key={minion.minionId}>
                     {minion.onCart ? (<div><li>{minion.minionId}</li>
+                    <img width="100" height="100" className='minionImage' src={require('../minion.png')}></img>
                     <button className='removeFromCartBtn'onClick={() => (this.remove(minion.minionId))}>Remover do carrinho</button></div>) : ''}
                 </div>
                 ))}
-
+                <button onClick={() => this.props.bookMinions({'Minions': this.props.minions.filter(minion => {
+            return minion.onCart === true
+        })})}>Reservar Minion(s)!</button>
             </ul>
         )
     }
@@ -40,7 +45,8 @@ class ShoppingCart extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        removeFromCart: id => dispatch(removeFromCart(id))
+        removeFromCart: id => dispatch(removeFromCart(id)),
+        bookMinions: (minions) => dispatch(bookMinions(minions))
     }
   }
 

@@ -7,14 +7,29 @@ export function removeFromCart(id) {
 }
 
 
-export function getMinions() {
-    return function(dispatch) {
-        return fetch("https://hp8igc55mi.execute-api.us-east-1.amazonaws.com/dev/query-minion")
-          .then(response => response.json())
-          .then(json => {
-            dispatch({ type: "GET_MINIONS", payload: json });
-          });
+export const getMinions = () => {
+    return async (dispatch) => {
+        
+          const resp = await fetch("https://hp8igc55mi.execute-api.us-east-1.amazonaws.com/dev/query-minion")
+          const respJson = await resp.json()
+          return dispatch({type: "GET_MINIONS", payload: respJson})
       };
 }
+
+export const bookMinions = (minions) => {
+    return async (dispatch) => {
+        console.log(minions)
+        const resp = await fetch("https://hp8igc55mi.execute-api.us-east-1.amazonaws.com/dev/book", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(minions)
+        })
+        return dispatch({type: "BOOK_MINIONS"})
+      };
+}
+
 
 

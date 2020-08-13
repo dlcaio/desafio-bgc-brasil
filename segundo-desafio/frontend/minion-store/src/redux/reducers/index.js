@@ -25,12 +25,21 @@ function rootReducer(state = initialState, action) {
   }
 
   if (action.type === "GET_MINIONS") {
-    
     return Object.assign({}, state, {
       minions: state.minions.concat(action.payload)
     })
   }
+
+  if (action.type === 'BOOK_MINIONS') {
+    return {
+      ...state, minions: state.minions.filter(
+        minion => minion.onCart !== true)
+      
+    }
+  }
+
   return state
+
 }
 
 export default rootReducer;

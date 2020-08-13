@@ -23,6 +23,9 @@ class Minions extends Component {
         this.props.addToCart(id)
     }
 
+    
+
+
     render() {
         const minions = this.props.minions
         return (
@@ -32,10 +35,11 @@ class Minions extends Component {
                 {minions.map(minion => (
                 <div key={minion.minionId}>
                     {!minion.onCart ? (<div><li>{minion.minionId}</li>
+                        <img width="100" height="100" className='minionImage' src={require('../minion.png')}></img>
+
                     <button className='addToCartBtn' onClick={() => (this.remove(minion.minionId))}>adicionar<br/>ao carrinho</button></div>) : ''}
                 </div>
                 ))}
-
             </ul>
         )
     }
