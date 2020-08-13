@@ -20,7 +20,7 @@ service: minion-store
 # frameworkVersion: "=X.X.X"
 
 custom:
-  tableName: 'minion-${self:provider.stage}'
+  tableName: 'minion-store'
 
 
 provider:
@@ -46,8 +46,6 @@ provider:
         - dynamodb:UpdateItem
 
         - dynamodb:DeleteItem
-
-        - dynamodb:BatchWriteItem
 
       Resource:
 
@@ -187,14 +185,10 @@ resources:
 
           -
 
-            AttributeName: booked
-
-            AttributeType: S
-          -
-
             AttributeName: minionId
 
             AttributeType: S
+
 
           
 
@@ -202,14 +196,10 @@ resources:
 
           -
 
-            AttributeName: booked
-
-            KeyType: HASH
-          -
-
             AttributeName: minionId
 
-            KeyType: RANGE
+            KeyType: HASH
+
 
         ProvisionedThroughput:
 
