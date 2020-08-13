@@ -5,7 +5,7 @@ const dynamodb = require('./dynamodb');
 module.exports.queryMinion = async event => {
   const params = {
     TableName: process.env.MINIONS_TABLE,
-    KeyConditionExpression: 'booked = :bkd',
+    FilterExpression: 'booked = :bkd',
     ExpressionAttributeValues: {
       ':bkd': 'false',
     }
@@ -13,7 +13,7 @@ module.exports.queryMinion = async event => {
   console.log(params)
 
   try{
-    const data = await dynamodb.query(params).promise()
+    const data = await dynamodb.scan(params).promise()
     console.log(JSON.stringify(data.Items))
     const code = 200
     const body = JSON.stringify(data.Items)
