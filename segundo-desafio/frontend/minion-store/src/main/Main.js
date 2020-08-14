@@ -1,8 +1,18 @@
 import React from 'react'
 import './Main.css'
-export const Main = () => {
+
+import { Auth } from 'aws-amplify';
+
+export default class Main extends React.Component {
+    constructor(props){
+        super()
+    }
+    render() {
+        const user = this.props.auth.user.username
     return (
-        <h3 className='Main'>A melhor loja<br/>de minions<br/>que você já viu</h3>
-            
-    )
+        <div>
+        {user ? <h2>aefaef{user}</h2> : ''}
+        
+        </div>
+    )}
 }
