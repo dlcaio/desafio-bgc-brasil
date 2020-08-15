@@ -1,10 +1,10 @@
 
 
 .removeFromCartBtn {
-    background-color: white; /* Green */
+    background-color: transparent; /* Green */
     border: none;
     color: darkred;
-    margin: 10px 0;
+    padding: 16px 12px;
     text-align: center;
     text-decoration: none;
     display: inline-block;

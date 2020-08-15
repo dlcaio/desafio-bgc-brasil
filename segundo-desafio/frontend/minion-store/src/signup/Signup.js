@@ -25,7 +25,8 @@ export default class Signup extends PureComponent {
 
     handleInputChange = (event) => {
         this.setState({
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value,
+            message: ''
         })
     }
 
@@ -73,11 +74,13 @@ export default class Signup extends PureComponent {
                     
                     
                     <form className='FormSignup' onSubmit={this.signUp}>
-                            <p className='Alert'>{this.state.message}</p>
-                            <input placeholder='e-mail' onChange={this.handleInputChange} name='user' type='text'></input>
-                            <input placeholder='senha' onChange={this.handleInputChange} name='password' type='password'></input>
-                            <button className='ButtonSubmit'>Cadastre-se</button>
                             
+                            <input placeholder='e-mail' onChange={this.handleInputChange} name='user' type='text'></input>
+                            
+                            <input placeholder='senha' onChange={this.handleInputChange} name='password' type='password'></input>
+                            
+                            <button className='ButtonSubmit'>Cadastre-se</button>
+                            <p className='Alert'>{this.state.message}</p>
                     </form> <button  className='buttonLinkRight' onClick={this.swapConfirmation}>Já se cadastrou? Confirme sua conta!</button></div>
                     )}
                     

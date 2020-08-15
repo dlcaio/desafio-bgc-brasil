@@ -36,7 +36,7 @@ class Signout extends PureComponent {
                     
                     
                     <form className='LogoutForm' onSubmit={this.signOut}>
-                        <button className='ButtonSubmit'>Log out</button>
+                        <button className='buttonLinkRight'>Log out</button>
                     </form>
                     
                 

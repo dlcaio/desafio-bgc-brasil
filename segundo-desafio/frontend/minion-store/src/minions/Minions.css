@@ -1,9 +1,9 @@
 
 
 .addToCartBtn {
-    background-color: white; /* Green */
+    background-color: transparent; /* Green */
     border: none;
-    color: darkgreen;
+    color: navy;
     padding: 16px 12px;
     text-align: center;
     text-decoration: none;
@@ -14,7 +14,7 @@
   }
 
 .addToCartBtn:hover {
-    color: limegreen;
+    color: skyblue;
     cursor: pointer;
 }
 

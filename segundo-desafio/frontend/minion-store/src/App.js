@@ -62,8 +62,8 @@ class App extends React.Component {
       
       <Main/>
       <div className='OnAndOffCart'>
-      {/*</Minions/>*/}
-      <ShoppingCart className='ShoppingCart'/>
+      {<Minions/>}
+      {/*<ShoppingCart className='ShoppingCart'/>*/}
       </div>
     </div>
   );

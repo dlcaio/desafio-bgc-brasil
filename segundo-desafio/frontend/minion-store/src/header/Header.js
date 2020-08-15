@@ -15,27 +15,23 @@ class Header extends React.Component {
     }
     render() {
     return (
-                <header>
-                    <div className='HeaderElements'>
-                        <h2 className='Logo'>MINIONS STORE</h2>
-                            
-                        <div className='HeaderSign'>
-                        {this.props.credentials === "" ? (
-                                <div>
-                                <Sign/>
-                                </div>
-                                
-                                
-                            ) : (
-                                <div>
-                                <Signout/>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                            
-                       
-                </header>
+
+            <header>
+
+                <h2 className='Logo'>MINIONS STORE</h2>
+                    
+                <div className='HeaderSign'>
+
+                {this.props.credentials === "" ? (
+                    <Sign/>
+                    ) : (
+                    <Signout/>
+                    )}
+
+                </div>
+                        
+                
+            </header>
             
     )
     }

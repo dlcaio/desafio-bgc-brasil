@@ -24,7 +24,8 @@ class Signin extends PureComponent {
     
     handleInputChange = (event) => {
         this.setState({
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value,
+            message: ''
         })
     }
 
@@ -64,19 +65,17 @@ class Signin extends PureComponent {
     render() {
         return (
             
-            <div  className='FormSign'>
 
                 
-                <form onSubmit={this.signIn}>
-                    <p className='Alert'>{this.state.message}</p>
+        <form className='Sign' onSubmit={this.signIn}>
 
-                    <input placeholder='e-mail' onChange={this.handleInputChange} name='user' type='text'></input>
-                    <input placeholder='senha' onChange={this.handleInputChange} name='password' type='password'></input>
-                    <button className='ButtonSubmit'>Entre!</button>
-                </form>
+            <input placeholder='e-mail' onChange={this.handleInputChange} name='user' type='text'></input>
+            <input placeholder='senha' onChange={this.handleInputChange} name='password' type='password'></input>
+            <button className='ButtonSubmit'>Entre!</button>
+            <p className='Alert'>{this.state.message}</p>
+        </form>
                 
                 
-            </div>
         )
     }
 }
