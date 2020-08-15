@@ -1,3 +1,5 @@
+import { Auth } from "aws-amplify";
+
 export function addToCart(id) {
     return {type: 'ADD_TO_CART', id}
 }
@@ -23,13 +25,34 @@ export const bookMinions = (minions) => {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+
             },
             body: JSON.stringify(minions)
         })
         return dispatch({type: "BOOK_MINIONS"})
       };
 }
+
+
+
+export const getCredentials = () => {
+    return async (dispatch) => {
+        console.log()
+        try{
+            const resp = await Auth.currentAuthenticatedUser()
+            return dispatch({type: "GET_CREDENTIALS", resp})
+        } catch (err) {
+            const resp = ''
+            return dispatch({type: "GET_CREDENTIALS", resp})
+        }
+        
+        
+      };
+}
+
+
+
 
 
 

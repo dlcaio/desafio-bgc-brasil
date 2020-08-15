@@ -1,6 +1,6 @@
 const initialState = {
-    minions: [
-      ]
+    minions: [],
+    credentials: ''
   };
 
 
@@ -34,6 +34,13 @@ function rootReducer(state = initialState, action) {
     return {
       ...state, minions: state.minions.filter(
         minion => minion.onCart !== true)
+      
+    }
+  }
+
+  if (action.type === 'GET_CREDENTIALS') {
+    return {
+      ...state, credentials: action.resp
       
     }
   }

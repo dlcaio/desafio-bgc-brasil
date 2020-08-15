@@ -9,12 +9,24 @@ class ShoppingCart extends Component {
     constructor(props) {
         super()
         this.remove = this.remove.bind(this)
+        this.book = this.book.bind(this)
         this.state = {
-            minions: []
+            message: ''
             
         }
     }
 
+
+    book = async () => {
+        this.props.credentials === '' ? 
+        (this.setState({message: 'Logue antes'})) : (
+            
+            this.props.bookMinions({'Minions': this.props.minions.filter(minion => {
+                return minion.onCart === true
+            }), 'UserId': this.props.credentials.username})
+        )
+        
+    }
 
     remove = id => {
         this.props.removeFromCart(id)
@@ -26,6 +38,7 @@ class ShoppingCart extends Component {
         return (
             <ul className='MinionOnCart'>
                 <h2 className='Cart'>Carrinho</h2>
+                
                 {minions.map(minion => (
                 
                 <div key={minion.minionId}>
@@ -34,10 +47,12 @@ class ShoppingCart extends Component {
                     <button className='removeFromCartBtn'onClick={() => (this.remove(minion.minionId))}>Remover do carrinho</button></div>) : ''}
                 </div>
                 ))}
-                <button onClick={() => this.props.bookMinions({'Minions': this.props.minions.filter(minion => {
-            return minion.onCart === true
-        })})}>Reservar Minion(s)!</button>
+                <p>{this.state.message}</p>
+                <button onClick={this.book}>Reservar Minion(s)!</button>
             </ul>
+
+
+    
         )
     }
 }
@@ -52,7 +67,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
 return {
-    minions: state.minions
+    minions: state.minions,
+    credentials: state.credentials
     }
 }
 

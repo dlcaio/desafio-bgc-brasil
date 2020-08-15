@@ -4,53 +4,88 @@ import './App.css';
 
 import Minions from './minions/Minions'
 import ShoppingCart from './shopping-cart/ShoppingCart';
-import { Header } from './header/Header'
-import Main from './main/Main'
+import Header from './header/Header'
+import { Main } from './main/Main'
 import Signin from './signin/Signin'
 import Signup from './signup/Signup'
-import SignupConfirmation from './signup-confirm/SignupConfirmation'
+import Sign from './sign/Sign'
+
+import SignupConfirm from './signup-confirm/SignupConfirmation'
+import { connect } from "react-redux";
+import { getCredentials } from "./redux/actions/index"
+
+
+import Signout from './signout/Signout'
 
 
 
 class App extends React.Component {
-
-  state = {
-    isAuthenticated: false,
-    user: {username: 'Johny'}
+  constructor(props) {
+    super()
+    this.state = {
+      email: ''
+    }
+    
   }
 
-  setAuthStatus = authenticated => {
-    this.setState({isAuthenticated: authenticated})
-  }
 
-  setUser = user => {
-    this.setState({user: user})
+  async componentDidMount() {
+    await this.props.getCredentials()
   }
+  
 
   render() {
-    const authData = {
-      isAuthenticated: this.state.isAuthenticated,
-      user: this.state.user,
-      setAuthStatus: this.setAuthStatus,
-      setUser: this.setUser
-    }
   return (
 
 
     <div className="App">
-      
       <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       <Header/>
-      <Signup auth={authData}/>
-      <SignupConfirmation auth={authData}/>
-      <Signin auth={authData}/>
-      <Main auth={authData}/>
-      <div className='OnAndOffCart'>
+      {this.props.credentials !== '' ? (
+        <p>Bem vindo,<br/>{JSON.stringify((this.props.credentials.username))}</p>
+      ) : ''}
+
+    
+      {/*this.props.credentials === "" ? (
+        <div>
+        <Sign/>
+        </div>
         
+        
+      ) : (
+        <div>
+        <Signout/>
+        </div>
+      )*/}
+            
+      
+      
+      <Main/>
+      <div className='OnAndOffCart'>
+      {/*</Minions/>*/}
+      <ShoppingCart className='ShoppingCart'/>
       </div>
     </div>
   );
   }
 }
 
-export default App;
+
+
+const mapStateToProps = state => {
+  return {
+      credentials: state.credentials
+      }
+  }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getCredentials: () => dispatch(getCredentials()),
+    }
+  }
+
+
+
+const AppConnected = connect(mapStateToProps, mapDispatchToProps)(App)
+
+export default AppConnected;

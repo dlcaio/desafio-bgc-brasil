@@ -1,32 +1,33 @@
 
 
+
+
 header {
-    padding-top: 16px;
-    padding-bottom: 6px;
-    display:grid;
-    margin: 0 auto;
+    overflow: hidden;
+    height: 110px;
 
 }
+
+
+
 
 .Logo {
-    display: grid;
-    border-bottom: 1px solid #000; 
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    
+    text-decoration: none;
+    font-size: 36px; 
+    margin-left: 80px;
     
     
 }
 
-header ul li {
-    display: inline-block;
-    margin: 0px 10px auto;
+.HeaderSign {
+    float: right;
+    margin-right: 20px;
+    padding-top: 32px;
     
+
 }
-
-header ul {
-    
-    width: 70%;
-    margin: 0 auto;
-    
-    
-}
-
-
