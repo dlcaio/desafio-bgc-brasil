@@ -21,7 +21,9 @@ module.exports.book = async event => {
         PutRequest: {
             Item: {
                 booked: true,
-                minionId: minion.minionId
+                minionId: minion.minionId,
+                UserId: data['UserId'],
+                UserEmail: data['UserEmail']
 
             }
         }
@@ -39,12 +41,17 @@ module.exports.book = async event => {
   };
 
 
+  var minionsDiv = ''
+  minions.map(minion => {
+    minionsDiv += '<h4>' + minion.PutRequest.Item.minionId + '</h4>'
+  })
 
-  var emailLayout = `<!DOCTYPE html><html><head></head><body><h1>Obrigado pela reserva!</h1><p>Você reservou o(s) minion(s) ${dataList}, aproveite! : )</p></body></html>`
+  var emailLayout = (
+    `<!DOCTYPE html><html><head></head><body><h1>Obrigado pela reserva!</h1><h3>Você reservou o(s) minion(s):</h3> ${minionsDiv} <h3>Aproveite seus minions : )</h3></body></html>`)
 
   var emailParams = {
         Destination: {
-            ToAddresses: ["caiodellalibera@id.uff.br"]
+            ToAddresses: [data['UserEmail'], "caiodellalibera@id.uff.br"]
         },
         Message: {
             Body: {
@@ -54,7 +61,7 @@ module.exports.book = async event => {
                 
             },
             
-            Subject: { Data: "Test Email"
+            Subject: { Data: "Sua reserva na Minions Store"
                 
             }
         },

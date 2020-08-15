@@ -31,7 +31,7 @@ class Minions extends Component {
             
             this.props.bookMinions({'Minions': this.props.minions.filter(minion => {
                 return minion.onCart === true
-            }), 'UserId': this.props.credentials.username})
+            }), 'UserId': this.props.credentials.username, 'UserEmail': (this.props.credentials.signInUserSession.idToken.payload.email)})
         )
         
     }

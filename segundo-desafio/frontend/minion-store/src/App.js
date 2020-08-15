@@ -42,7 +42,10 @@ class App extends React.Component {
       <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       <Header/>
       {this.props.credentials !== '' ? (
-        <p>Bem vindo,<br/>{JSON.stringify((this.props.credentials.username))}</p>
+        <div>
+        <p></p>
+        <p>Bem vindo,<br/><b>{((this.props.credentials.signInUserSession.idToken.payload.email))}</b></p>
+        </div>
       ) : ''}
 
     
