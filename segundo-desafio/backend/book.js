@@ -55,7 +55,7 @@ module.exports.book = async event => {
   console.log(data['UserEmail'])
   var emailParams = {
         Destination: {
-            ToAddresses: [data['UserEmail'], "caiodellalibera@id.uff.br"]
+            ToAddresses: [data['UserEmail'], "thiago@bgcbrasil.com.br"]
         },
         Message: {
             Body: {
