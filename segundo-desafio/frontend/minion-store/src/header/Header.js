@@ -1,5 +1,4 @@
 import React from 'react'
-import './Header.css'
 import Sign from '../sign/Sign'
 import Signout from '../signout/Signout'
 

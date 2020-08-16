@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import { Auth } from 'aws-amplify';
 import { getCredentials } from "../redux/actions/index"
 import { connect } from "react-redux";
-import './Signin.css'
 
 
 

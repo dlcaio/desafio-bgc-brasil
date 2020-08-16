@@ -5,7 +5,6 @@ import { removeFromCart } from "../redux/actions/index";
 import { bookMinions } from "../redux/actions/index";
 
 import { getMinions } from "../redux/actions/index"
-import  './Minions.css'
 
 class Minions extends Component {
     constructor(props) {

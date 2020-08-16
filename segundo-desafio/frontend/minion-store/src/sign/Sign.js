@@ -4,7 +4,6 @@ import { Auth } from 'aws-amplify';
 import SignupConfirm from '../signup-confirm/SignupConfirmation'
 import Signup from '../signup/Signup'
 import Signin from '../signin/Signin'
-import './Sign.css'
 
 
 
