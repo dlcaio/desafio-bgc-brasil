@@ -15,7 +15,8 @@ class Signin extends PureComponent {
         this.state = {
             user: '',
             password: '',
-            message: ''
+            message: '',
+            disable: false
         }
     }
 
@@ -33,29 +34,33 @@ class Signin extends PureComponent {
     signIn = async event => {
         event.preventDefault()
         try {
+            this.setState({
+                disable: true,
+                message: 'Loading'
+            })
             const user = this.state.user
             const password = this.state.password
             const resp = await Auth.signIn(user, password);
             await this.props.getCredentials()
 
-            
-
-
-
-            
-
-
 
             const current = await Auth.currentSession()
+            this.setState({
+                password: ''
+            })
 
-
-
-            console.log(current)
 
         } catch (error) {
-            this.setState({message: error.message})
+            this.setState({
+                password: '',
+                disable: false
+            })
+            this.setState({
+                message: error.message,
+            })
             console.log('error signing up:', error);
         }
+        
     }
 
 
@@ -65,17 +70,17 @@ class Signin extends PureComponent {
     render() {
         return (
             
-
-                
+        <div>
+        <p className='Label'>Login</p>      
         <form className='Sign' onSubmit={this.signIn}>
 
-            <input placeholder='e-mail' onChange={this.handleInputChange} name='user' type='text'></input>
-            <input placeholder='senha' onChange={this.handleInputChange} name='password' type='password'></input>
-            <button className='ButtonSubmit'>Entre!</button>
-            <p className='Alert'>{this.state.message}</p>
+            <input placeholder='e-mail' onChange={this.handleInputChange} value={this.state.user} name='user' type='email'/>
+            <input placeholder='senha' onChange={this.handleInputChange} value={this.state.password} name='password' type='password'/>
+            <button className='ButtonSubmit' disabled={this.state.disable}>Entre!</button>
+            <p className='AlertLeft'>{this.state.message}</p>
         </form>
                 
-                
+        </div>       
         )
     }
 }

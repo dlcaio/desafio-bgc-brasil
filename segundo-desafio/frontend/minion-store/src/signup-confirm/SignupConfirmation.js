@@ -53,12 +53,12 @@ export default class Signup extends PureComponent {
                     
                     <form className='FormSign' onSubmit={this.signUpConfirm}>
                             
-                            <input placeholder='e-mail' onChange={this.handleInputChange} name='user' type='text'></input>
+                            <input placeholder='e-mail' onChange={this.handleInputChange} name='user' type='email'></input>
                             
                             <input placeholder='código' onChange={this.handleInputChange} name='code' type='code'></input>
                             
                             <button className='ButtonSubmit'> Confirme sua conta!</button>
-                            <p className='Alert'>{this.state.message}</p>
+                            <p className='AlertLeft'>{this.state.message}</p>
                     </form>
                     
                 

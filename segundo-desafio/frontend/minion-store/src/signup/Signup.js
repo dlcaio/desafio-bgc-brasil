@@ -10,9 +10,9 @@ export default class Signup extends PureComponent {
         this.state = {
             user: '',
             password: '',
-            showCodeField: false,
             message: '',
-            confirm: false
+            confirm: false,
+            disable: false
         }
     }
 
@@ -33,13 +33,13 @@ export default class Signup extends PureComponent {
     signUp = async event => {
         event.preventDefault()
         try {
+            this.setState({disable: true})
             const user = this.state.user
             const password = this.state.password
             const resp = await Auth.signUp(user, password);
             console.log(resp)
             this.setState({
                 confirm: true,
-                showCodeField: true,
                 message: `A confirmation code has been sent to ${resp.user.username}, type it here to confirm your account`
             })
             
@@ -48,8 +48,8 @@ export default class Signup extends PureComponent {
             this.setState({
                 user: '',
                 password: '',
-                showCodeField: false,
-                message: error.message
+                message: error.message,
+                disable: false
             })
         }
         
@@ -65,6 +65,7 @@ export default class Signup extends PureComponent {
                 
                     {this.state.confirm === true ? (
                         <div>
+                        <p className='Label'>Confirmação de Cadastro</p>
                         <SignupConfirm/>
                         <button  className='buttonLinkRight' onClick={this.swapConfirmation}>Ainda não se cadastrou? Cadastre-se aqui</button>
                         </div>
@@ -72,15 +73,15 @@ export default class Signup extends PureComponent {
                         <div>
                     
                     
-                    
+                    <p className='Label'>Cadastro</p>
                     <form className='FormSignup' onSubmit={this.signUp}>
                             
-                            <input placeholder='e-mail' onChange={this.handleInputChange} name='user' type='text'></input>
+                            <input placeholder='e-mail' onChange={this.handleInputChange} name='user' type='email'></input>
                             
                             <input placeholder='senha' onChange={this.handleInputChange} name='password' type='password'></input>
                             
-                            <button className='ButtonSubmit'>Cadastre-se</button>
-                            <p className='Alert'>{this.state.message}</p>
+                            <button className='ButtonSubmit' disabled={this.state.disable}>Cadastre-se</button>
+                            <p className='AlertLeft'>{this.state.message}</p>
                     </form> <button  className='buttonLinkRight' onClick={this.swapConfirmation}>Já se cadastrou? Confirme sua conta!</button></div>
                     )}
                     

@@ -1,30 +1,69 @@
+* {box-sizing: border-box;}
 
 .App {
   text-align: center;
 }
 body {
-  background-color: lightgoldenrodyellow;
-}
-
-
-
-.OnAndOffCart {
-  display: flex;
-  justify-content: center;
-  min-height: 700px;
-}
-
-
-
-body {
+  background-color: gold;
   margin: 0;
+
+   padding:0;
+   height:100%;
+
 }
+
+html {
+  margin:0;
+   padding:0;
+   height:100%;
+}
+
+.MinionsInstruct1 {
+  font-size: 80px;
+  height: initial;
+  padding-top: 0px;
+  
+}
+
+.MinionsInstruct2 {
+  
+  font-size: 40px;
+  margin: 0px 0;
+  
+  height: initial;
+  padding-top: 0px;
+  margin-bottom: 40px;
+  padding-bottom: 400px;
+}  
+
+
+
+
+.AlertLeft {
+  font-size: 12px;
+  color: red;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 2px;
+}
+
+.Alert {
+  font-size: 30px;
+  color: red;
+  font-weight: bold;
+}
+
+
 
 header {
-  background-color: gold;
-  height: 180px;
+  background-color: rgb(255, 235, 121);
+  height: 176px;
   margin-bottom: 100px;
+  border-bottom: 1px solid black;
+
 }
+
+
 
 .Logo {
   float: left;
@@ -34,22 +73,31 @@ header {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 36px;
-  line-height: 1.8;
+  line-height: 1.4;
+  margin-left: 70px;
 }
 
-
+.DivSign .Label {
+  text-align: left;
+  padding: 0px;
+  margin: 8px 1px 0 1px;
+  font-size: 14px;
+  font-weight: bold;
+}
 
 .HeaderSign {
   float: right;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 header input {
   padding: 6px;
-  margin: 8px 1px 0 1px;
+  margin: 8px 0px 0 0px;
   font-size: 17px;
   border: none;
   width:120px;
+  background-color: rgb(253, 250, 235);
+  border: 1px solid black;
 }
 
 .ButtonSubmit {
@@ -63,11 +111,35 @@ header input {
   font-size: 17px;
   border: none;
   cursor: pointer;
+  border: 1px solid black;
 
   
 }
 
+
 .ButtonSubmit:hover {
+  background-color: rgb(204, 242, 255);
+  transition: 0.4s;
+}
+
+
+
+.buttonBook {
+  
+  padding: 50px 50px;
+  margin-top: 20px;
+  
+  background-color: lightskyblue;
+  color: black;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid black;
+  margin-bottom: 30px;
+}
+
+.buttonBook:hover {
   background-color: rgb(204, 242, 255);
   transition: 0.4s;
 }
@@ -80,50 +152,50 @@ header input {
   font-family: arial, sans-serif;
   /*input has OS specific font-family*/
   color: #069;
-  text-decoration: underline;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .DivSign .buttonLinkRight {
-  background: none!important;
+  background: none;
   border: none;
-  padding: 0!important;
-  margin: 2px;
-  /*optional*/
+  padding: 0;
   font-family: arial, sans-serif;
-  /*input has OS specific font-family*/
   color: #069;
-  text-decoration: underline;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .LogoutForm .buttonLinkRight {
-  background: none!important;
+  float: right;
+  padding: 6px 10px;
+  margin-top: 40px;
+  margin-right: 16px;
+  background-color: lightskyblue;
+  color: black;
+  font-size: 17px;
   border: none;
-  padding: 0!important;
-  margin: 2px;
-  /*optional*/
-  font-family: arial, sans-serif;
-  /*input has OS specific font-family*/
-  color: #069;
-  text-decoration: underline;
   cursor: pointer;
+  border: 1px solid black;
+  
 }
 
 
-
-
-/* Float four columns side by side */
-
-
-/* Remove extra left and right margins, due to padding */
 
 .MinionColumn {
-  width: 100%;
+  float:left;
+  width: 20%;
+  padding: 0 20px;
+  margin-bottom: 20px;
 }
-.Minions{margin: 0 -5px;}
 
-/* Clear floats after the columns */
+.Minions{
+  padding-top: 90px;
+  margin: 0 -5px;
+  border-top: 1px solid black;
+
+}
+
 .Minions:after {
   content: "";
   display: table;
@@ -131,28 +203,117 @@ header input {
 }
 
 .Minion {
-  margin: 10px;
-  border-radius: 10%;
-  padding: 16px;
+  float: none;
   text-align: center;
-  background-color: gold;
-  display: block;
+  padding: 16px;
+  
+}
+
+.Minion img  {
+  cursor: pointer;
 }
 
 
+.removeFromCartBtn {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background-color: rgb(163, 60, 0);
+  color: lightgrey;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
 
+.removeFromCartBtn:hover {
+  background-color: red;
+  transition: 0.4s;
+}
 
+.addToCartBtn { 
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background-color: lightskyblue;
+  color: black;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
 
+}
+
+.addToCartBtn:hover {
+  background-color: rgb(204, 242, 255);
+  transition: 0.4s;
+}
+
+.MinionsUnavalable  {
+  margin-top: -200px;
+  font-size: 80px;
+}
 
 
 @media screen and (max-width: 900px) {
-  header {
-    height: 270px
+  
+
+  .Welcome {
+    margin: 20px;
+    margin-top: 70px;
+    margin-bottom: -50px;
+    font-size: 20px;
+        
   }
+
+  .LogoutForm .buttonLinkRight {
+    float: none;
+    padding: 6px 10px;
+    margin-top: 40px;
+    margin-right: 16px;
+    background-color: lightskyblue;
+    color: black;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    border: 1px solid black;
+    
+  }
+
+  .MinionsInstruct1 {
+    font-size: 32px;
+    height: initial;
+    margin-top: 360px;
+    
+  }
+
+  .MinionsInstruct2 {
+    
+    font-size: 18px;
+    margin: 20px 0;
+    
+    height: initial;
+    padding-top: 0px;
+    margin-bottom: 0px;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+  }  
+  .Minions{
+    padding-top: 0;
+    border-top: 1px solid black;
+    margin: 0px;
+    
+  }
+    
+  
 
   .HeaderSign {
     float: none;
+    margin-top: 0px;
+
   }
+
+
   .Logo, header input, header .HeaderSign .ButtonSubmit {
     float: none;
     display: block;
@@ -162,16 +323,68 @@ header input {
     padding: 14px;
   }
 
+  header input {
+    margin: 6px 0;
+  }
+
+  .DivSign .Label {
+    text-align: center;
+    padding: 6px;
+    margin: 8px 1px 0 1px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+
+  .MinionColumn {
+    
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+
   header{
     text-align: center;
+    height: 60px;
   }
+
 
   .Logo {
     text-align: center;
-    position: relative
+    position: relative;
+    font-size: 20px;
   }
 
+  .buttonLinkLeft {
+    margin-top: 10px;
+  }
 
+  .DivSign .buttonLinkLeft {
+    background: none!important;
+    border: none;
+    padding: 2px 0!important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: #069;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  
+  .DivSign .buttonLinkRight {
+    background: none;
+    border: none;
+    padding: 2px 0;
+    font-family: arial, sans-serif;
+    color: #069;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 24px;
+  }
   
  
 
@@ -179,7 +392,6 @@ header input {
 
     display: block;
     width: 100%;
-    border: none;
     background-color: lightskyblue;
     color: black;
     padding: 14px 28px;
@@ -189,5 +401,31 @@ header input {
     float: right;
   }
 
+
+  .buttonBook {
+  
+    display: block;
+    width: 100%;
+    background-color: lightskyblue;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    float: right;
+    margin-bottom: 0px;
+  }
+
+  .MinionsUnavalable  {
+    margin-top: -200px;
+    font-size: 40px;
+  }
+
+
+  .AlertLeft {
+    color: red;
+    font-weight: bold;
+    padding: 0 6px;
+  }
   
 }

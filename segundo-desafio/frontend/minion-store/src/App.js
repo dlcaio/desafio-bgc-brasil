@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 
 import Minions from './minions/Minions'
-import ShoppingCart from './shopping-cart/ShoppingCart';
 import Header from './header/Header'
 import { Main } from './main/Main'
 import Signin from './signin/Signin'
@@ -43,8 +42,7 @@ class App extends React.Component {
       <Header/>
       {this.props.credentials !== '' ? (
         <div>
-        <p></p>
-        <p>Bem vindo,<br/><b>{((this.props.credentials.signInUserSession.idToken.payload.email))}</b></p>
+        <h1 className='Welcome'>Boas vindas,<br/>{((this.props.credentials.signInUserSession.idToken.payload.email))}</h1>
         </div>
       ) : ''}
 
@@ -63,11 +61,15 @@ class App extends React.Component {
             
       
       
-      <Main/>
-      <div className='OnAndOffCart'>
-      {<Minions/>}
-      {/*<ShoppingCart className='ShoppingCart'/>*/}
-      </div>
+        
+        <h1 className='MinionsInstruct1'>
+          Clique nos seus minions prediletos<br/>para adicioná-los ao carrinho!
+        </h1>
+        <h4 className='MinionsInstruct2'>
+          Depois é só clicar no botão "Reservar Minion(s)!"<br/>e correr pro abraço : )
+        </h4>
+      
+        {<Minions/>}
     </div>
   );
   }

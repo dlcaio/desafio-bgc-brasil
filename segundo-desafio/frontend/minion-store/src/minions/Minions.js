@@ -27,11 +27,11 @@ class Minions extends Component {
 
     book = async () => {
         this.props.credentials === '' ? 
-        (this.setState({message: 'Logue antes'})) : (
+        (this.setState({message: 'Faça login antes de realizar a reserva : )'})) : (
             
             this.props.bookMinions({'Minions': this.props.minions.filter(minion => {
                 return minion.onCart === true
-            }), 'UserId': this.props.credentials.username, 'UserEmail': (this.props.credentials.signInUserSession.idToken.payload.email)})
+            }), 'UserId': this.props.credentials.username})
         )
         
     }
@@ -43,27 +43,35 @@ class Minions extends Component {
         const minions = this.props.minions
         return (
             <div>
-            <h2 className='ourMinions'>Nossos Minions</h2>
-            <ul className='Minions'>
+            {minions.length !== 0 ? (
+             <div>
+                <ul className='Minions'>
                 
                 {minions.map(minion => (
                 <div className='MinionColumn' key={minion.minionId}>
                     {!minion.onCart ? (<div className='Minion'><li>{minion.minionId}</li>
                         <p>itstruahiuehfeaiufhaeifhu</p>
-                        <img width="100" height="100" className='minionImage' src={require('../minion.png')}></img>
+                        
+                        <img onClick={() => (this.props.addToCart(minion.minionId))} width="240" height="240" className='minionImage' src={require('../minion.png')}></img>
 
-                        <button className='addToCartBtn' onClick={() => (this.props.addToCart(minion.minionId))}>Adicionar<br/>ao carrinho</button></div>) : (
+                </div>) : (
                             <div className='Minion'><li>{minion.minionId}</li>
                             <p>itstruahiuehfeaiufhaeifhu</p>
-                            <img width="100" height="100" className='minionImage' src={require('../minion-cart.png')}></img>
+                            <img onClick={() => (this.props.removeFromCart(minion.minionId))} width="240" height="240" className='minionImage' src={require('../minion-cart.png')}></img>
     
-                            <button className='removeFromCartBtn' onClick={() => (this.props.removeFromCart(minion.minionId))}>Remover<br/>do carrinho</button></div>
+                            </div>
                         )}
                 </div>
                 ))}
-                <p>{this.state.message}</p>
-                <button onClick={this.book}>Reservar Minion(s)!</button>
+                
+                
             </ul>
+            <p className='Alert'>{this.state.message}</p>
+            <button className='buttonBook' onClick={this.book}>Reservar Minion(s)!</button></div>
+            ) : (
+                <h3 className='MinionsUnavalable'>Poxa, não há minions disponíveis no momento<br/>: /</h3>
+            )}
+            
             </div>
         )
     }

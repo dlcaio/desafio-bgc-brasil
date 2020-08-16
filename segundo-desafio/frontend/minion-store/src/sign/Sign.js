@@ -36,6 +36,7 @@ export default class Sign extends PureComponent {
                 
                 {this.state.signup === false ? (
                     <div className='DivSign'>
+                    
                     <Signin/>
                     <button  className='buttonLinkLeft' onClick={this.swapSign}>Cadastre-se</button>
                     </div>

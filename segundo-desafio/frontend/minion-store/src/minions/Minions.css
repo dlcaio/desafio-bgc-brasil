@@ -1,27 +1,4 @@
 
-
-.addToCartBtn {
-    background-color: transparent; /* Green */
-    border: none;
-    color: navy;
-    padding: 16px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.4s;
-
-  }
-
-.addToCartBtn:hover {
-    color: skyblue;
-    cursor: pointer;
-}
-
-.ourMinions {
-    font-size: 40px;
-}
-
 li{
     font-size: 24px;
     color:black; 
