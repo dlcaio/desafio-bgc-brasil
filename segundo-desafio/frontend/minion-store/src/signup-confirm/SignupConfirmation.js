@@ -9,7 +9,8 @@ export default class Signup extends PureComponent {
         this.state = {
             user: '',
             code: '',
-            message: ''
+            message: '',
+            disable: false
         }
     }
 
@@ -24,16 +25,27 @@ export default class Signup extends PureComponent {
     signUpConfirm = async event => {
         event.preventDefault()
         try {
+            this.setState({
+                disable: true,
+                message: 'Loading'
+            })
             const user = this.state.user
             const code = this.state.code
             const resp = await Auth.confirmSignUp(user, code);
             console.log(resp)
             
+            this.setState({
+                disable: false,
+                confirm: true,
+                message: 'User successfully created : )'
+            })
+
         } catch (error) {
             console.log('error signing up:', error);
             this.setState({
-                
-                message: error.message
+                code: '',
+                message: error.message,
+                disable: false
             })
         }
         
@@ -45,19 +57,14 @@ export default class Signup extends PureComponent {
         return (
             
             <div>
-
-                
-                
-                    
-                    
-                    
+                    <p className='Label'>Confirme Cadastro</p>
                     <form className='FormSign' onSubmit={this.signUpConfirm}>
                             
-                            <input placeholder='e-mail' onChange={this.handleInputChange} name='user' type='email'></input>
+                            <input placeholder='e-mail' onChange={this.handleInputChange} value={this.state.user} name='user' type='email'></input>
                             
-                            <input placeholder='código' onChange={this.handleInputChange} name='code' type='code'></input>
+                            <input placeholder='código' onChange={this.handleInputChange} value={this.state.code} name='code' type='code'></input>
                             
-                            <button className='ButtonSubmit'> Confirme sua conta!</button>
+                            <button className='ButtonSubmit' disabled={this.state.disable}> Confirme sua conta!</button>
                             <p className='AlertLeft'>{this.state.message}</p>
                     </form>
                     

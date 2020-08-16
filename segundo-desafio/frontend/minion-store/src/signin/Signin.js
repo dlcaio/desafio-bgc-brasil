@@ -53,9 +53,7 @@ class Signin extends PureComponent {
         } catch (error) {
             this.setState({
                 password: '',
-                disable: false
-            })
-            this.setState({
+                disable: false,
                 message: error.message,
             })
             console.log('error signing up:', error);

@@ -11,19 +11,19 @@ import './Sign.css'
 export default class Sign extends PureComponent {
     constructor(props) {
         super()
-        this.swapSign = this.swapSign.bind(this)
+        this.swapSignType = this.swapSignType.bind(this)
 
         this.state = {
             user: '',
             password: '',
             message: '',
-            signup: false,
+            signType: 'signin'
         }
     }
 
-    swapSign = () => {
+    swapSignType = (type) => {
         this.setState({
-            signup: !this.state.signup
+            signType: type
         })
     }
 
@@ -34,16 +34,24 @@ export default class Sign extends PureComponent {
             <div>
 
                 
-                {this.state.signup === false ? (
+                {this.state.signType === 'signin' ? (
                     <div className='DivSign'>
                     
                     <Signin/>
-                    <button  className='buttonLinkLeft' onClick={this.swapSign}>Cadastre-se</button>
+                    <button  className='buttonLinkLeft' onClick={() => this.swapSignType('signup')}>Cadastre-se</button>
+                    <button  className='buttonLinkRight' onClick={() => this.swapSignType('signupConfirm')}>Confirme Cadastro</button>
+                    </div>
+                ) : this.state.signType === 'signup' ? (
+                    <div className='DivSign'>
+                    <Signup/>
+                    <button  className='buttonLinkLeft' onClick={() => this.swapSignType('signin')}>Faça login</button>
+                    <button  className='buttonLinkRight' onClick={() => this.swapSignType('signupConfirm')}>Confirme Cadastro</button>
                     </div>
                 ) : (
                     <div className='DivSign'>
-                    <Signup/>
-                    <button className='buttonLinkLeft' onClick={this.swapSign}>Faça login</button>
+                    <SignupConfirm/>
+                    <button  className='buttonLinkLeft' onClick={() => this.swapSignType('signin')}>Faça login</button>
+                    <button  className='buttonLinkRight' onClick={() => this.swapSignType('signup')}>Cadastre-se</button>
                     </div>
                 )}
                 
