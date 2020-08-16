@@ -23,7 +23,9 @@ module.exports.book = async event => {
                 booked: true,
                 minionId: minion.minionId,
                 UserId: data['UserId'],
-                UserEmail: data['UserEmail']
+                UserEmail: data['UserEmail'],
+                name: minion.name,
+                description: minion.description
 
             }
         }
@@ -43,12 +45,14 @@ module.exports.book = async event => {
 
   var minionsDiv = ''
   minions.map(minion => {
-    minionsDiv += '<h4>' + minion.PutRequest.Item.minionId + '</h4>'
+    minionsDiv +=
+    '<h2>Nome: ' + minion.PutRequest.Item.name + '</h2>' + '<h3>Descrição: ' + minion.PutRequest.Item.name + '</h3>'
   })
 
   var emailLayout = (
-    `<!DOCTYPE html><html><head></head><body><h1>Obrigado pela reserva!</h1><h3>Você reservou o(s) minion(s):</h3> ${minionsDiv} <h3>Aproveite seus minions : )</h3></body></html>`)
+    `<!DOCTYPE html><html><head></head><body><h1>Obrigado pela reserva!</h1><h4>Você reservou o(s) minion(s):</h4> ${minionsDiv} <h4>Aproveite seus minions : )</h4></body></html>`)
 
+  console.log(data['UserEmail'])
   var emailParams = {
         Destination: {
             ToAddresses: [data['UserEmail'], "caiodellalibera@id.uff.br"]

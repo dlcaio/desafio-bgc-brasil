@@ -31,7 +31,7 @@ class Minions extends Component {
             
             this.props.bookMinions({'Minions': this.props.minions.filter(minion => {
                 return minion.onCart === true
-            }), 'UserId': this.props.credentials.username})
+            }), 'UserId': this.props.credentials.username, 'UserEmail': (this.props.credentials.signInUserSession.idToken.payload.email)})
         )
         
     }
@@ -41,6 +41,7 @@ class Minions extends Component {
 
     render() {
         const minions = this.props.minions
+        
         return (
             <div>
             {minions.length !== 0 ? (
@@ -49,15 +50,17 @@ class Minions extends Component {
                 
                 {minions.map(minion => (
                 <div className='MinionColumn' key={minion.minionId}>
-                    {!minion.onCart ? (<div className='Minion'><li>{minion.minionId}</li>
-                        <p>itstruahiuehfeaiufhaeifhu</p>
+                    {!minion.onCart ? (<div className='Minion'>
+                        <li>{minion.name}</li>
+                        <p>{minion.description}</p>
                         
-                        <img onClick={() => (this.props.addToCart(minion.minionId))} width="240" height="240" className='minionImage' src={require('../minion.png')}></img>
+                        <img onClick={() => (this.props.addToCart(minion.minionId))}  className='minionImage' src={require('../minion.png')}></img>
 
                 </div>) : (
-                            <div className='Minion'><li>{minion.minionId}</li>
-                            <p>itstruahiuehfeaiufhaeifhu</p>
-                            <img onClick={() => (this.props.removeFromCart(minion.minionId))} width="240" height="240" className='minionImage' src={require('../minion-cart.png')}></img>
+                            <div className='Minion'>
+                            <li>{minion.name}</li>
+                            <p>{minion.description}</p>
+                            <img onClick={() => (this.props.removeFromCart(minion.minionId))}  className='minionImage' src={require('../minion-cart.png')}></img>
     
                             </div>
                         )}

@@ -42,22 +42,10 @@ class App extends React.Component {
       <Header/>
       {this.props.credentials !== '' ? (
         <div>
-        <h1 className='Welcome'>Boas vindas,<br/>{((this.props.credentials.signInUserSession.idToken.payload.email))}</h1>
+        <h1 className='Welcome'>Boas vindas,<br/>{(this.props.credentials.signInUserSession.idToken.payload.email)}</h1>
         </div>
       ) : ''}
 
-    
-      {/*this.props.credentials === "" ? (
-        <div>
-        <Sign/>
-        </div>
-        
-        
-      ) : (
-        <div>
-        <Signout/>
-        </div>
-      )*/}
             
       
       

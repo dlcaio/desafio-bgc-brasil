@@ -37,7 +37,7 @@ export default class Signup extends PureComponent {
             this.setState({
                 disable: false,
                 confirm: true,
-                message: 'User successfully created : )'
+                message: 'Usuário criado com sucesso : )'
             })
 
         } catch (error) {

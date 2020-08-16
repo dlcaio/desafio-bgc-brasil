@@ -35,7 +35,7 @@ export default class Signup extends PureComponent {
             console.log(resp)
             this.setState({
                 disable: false,
-                message: `A confirmation code has been sent to ${resp.user.username}, type it here to confirm your account`
+                message: `Confirme sua conta com o código enviado para ${resp.user.username}`
             })
             
         } catch (error) {

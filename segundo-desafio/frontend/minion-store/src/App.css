@@ -194,14 +194,15 @@ header input {
 .MinionColumn {
   float:left;
   width: 20%;
-  padding: 0 20px;
   margin-bottom: 20px;
+
+
 }
 
 .Minions{
   padding-top: 90px;
-  margin: 0 -5px;
   border-top: 1px solid black;
+  
 
 }
 
@@ -216,9 +217,26 @@ header input {
   text-align: center;
   padding: 16px;
   
+  
+}
+
+.Minion p  {
+  max-height: 0px;
+  text-align: center;
+}
+
+.Minion li  {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  display: grid;
+
 }
 
 .Minion img  {
+  width: 100%;
+  height: 15vw;
+  margin-top: 50px;
   cursor: pointer;
 }
 
@@ -263,14 +281,43 @@ header input {
   font-size: 80px;
 }
 
+@media screen and (max-width: 1500px) {
 
-@media screen and (max-width: 900px) {
+  .MinionColumn {
+    float:left;
+    width: 33%;
+    padding: 0 20px;
+    margin-bottom: 20px;
+  
+  }
+
+  .Minion p  {
+    max-height: 0px;
+    text-align: center;
+  }
+  
+  .Minion li  {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .Minion img  {
+    width: 100%;
+    height: initial;
+    max-width: 300px;
+    margin-top: 50px;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 1000px) {
   
 
   .Welcome {
     margin: 20px;
-    margin-top: 70px;
-    margin-bottom: -50px;
+    padding-top: 80px;
+    margin-bottom: -150px;
     font-size: 20px;
         
   }
@@ -292,7 +339,7 @@ header input {
   .MinionsInstruct1 {
     font-size: 32px;
     height: initial;
-    margin-top: 360px;
+    margin-top: 270px;
     
   }
 
@@ -311,9 +358,30 @@ header input {
     padding-top: 0;
     border-top: 1px solid black;
     margin: 0px;
+    max-width: 100%;
+   
     
   }
-    
+
+  .Minion {
+    max-width: 100%;
+  }
+  
+  .Minion p  {
+    max-height: 0px;
+    max-width: 100%;
+  }
+
+   
+  .Minion img  {
+    width: initial;
+    height: initial;
+    max-width: 100%;
+    margin-top: 50px;
+    cursor: pointer;
+    padding: 0
+  }
+  
   
 
   .HeaderSign {
@@ -383,8 +451,8 @@ header input {
     color:rgb(95, 168, 197);
     cursor: pointer;
     font-weight: bold;
-    font-size: 24px;
-    margin: 0 20px 0
+    font-size: 16px;
+    margin: 0 10px 0
   }
   
   .DivSign .buttonLinkRight {
@@ -396,8 +464,8 @@ header input {
     color:rgb(95, 168, 197);
     cursor: pointer;
     font-weight: bold;
-    font-size: 24px;
-    margin: 0 20px 0
+    font-size: 16px;
+    margin: 0 10px 0
   }
   
  
@@ -431,7 +499,7 @@ header input {
   }
 
   .MinionsUnavalable  {
-    margin-top: -200px;
+    margin-top: 200px;
     font-size: 40px;
   }
 
