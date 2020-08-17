@@ -23,13 +23,17 @@ O Redux Saga é uma bilbioteca particular do redux, que serve pra lidar de forma
 
 É um serviço da AWS que fornece o gerenciamento completo de APIs REST, HTTP, e websocket, automatizando o processo de criação, manutenção, publicação, monitoramento e segurança em APIs. Muito escalável, consegue processar muitas requisições a uma API de forma simultânea.
 
+# AWS Lambda
+
+É um serviço da AWS que fornece execução de código em resposta a eventos - como requisições HTTP, alterações no banco de dados - e com o qual o desenvolvedor não precisa se preocupar com a configuração do servidor ou escalabilidade, já que a AWS é responsável por alocar recursos para garantir que a aplicação funcione. Além disso, não há desperdício por recursos ociosos, já que a cobrança é feita quando o código é executado
+
 # AWS Step Functions
 
-step functtion é um serviço aws que tem como objetivo orquestrar e sequenciar funções lambda e outros serviços aws, fazendo com que cada passo da aplicação sirva possa servir de input para o próximo. serve também pra facilitar a administração também de retries, depurar falhas.
+AWS Step Functions é um serviço aws que tem como objetivo orquestrar e sequenciar funções lambda e outros serviços aws, fazendo com que cada passo da aplicação sirva possa servir de input para o próximo. Serve também pra facilitar a administração também de retries, depurar falhas.
 
 # AWS DynamoDB
 
-O DynamoDB é um banco de dados NoSQL - não utiliza tabelas relacionais - totalmente gerenciado pela AWS, muito rápido, disponível e escalável. Por ser um banco de dados nosql, não é recomendado para realizar queries complexas, e não pode fazer joins.
+O DynamoDB é um banco de dados NoSQL - não utiliza tabelas relacionais - totalmente gerenciado pela AWS, muito rápido, altamente disponível e escalável. Por ser um banco de dados nosql, não é recomendado para realizar queries complexas, e não pode fazer joins.
 
 # AWS RDS
 
@@ -48,10 +52,13 @@ Também é muito utilizado pra armazenar arquivos de aplicações web, como foto
 
 O AWS Cognito é um serviço da que tem por objetivo facilitar a implementação de autenticação, autorização, e o gerenciamento de usuários de aplicações web e mobile. O cognito tem dois componentes centrais: a User Pool - responsável por autenticar usuários e fornercer-lhes crefencias de acesso à aplicação - e a Identity Pool, que possibilita que usuários autenticados possam receber credenciais AWS específicas para utilizar outros serviços AWS utilizados pela aplicação.
 
+# AWS CloudWatch
 
+O AWS CloudWatch é um serviço de monitoramento centralizado de recursos da AWS. Com ele, o desenvolvedor consegue em um só lugar ter acesso a dados relacionados aos recursos AWS, como métricas e logs. Além disso, é possível configurar o CloudWatch pra responder a determinados eventos envolvendo esses dados relacionados aos serviços e, por exemplo, interromper a execução de uma instância EC2.
 
+# AWS CloudFormation
 
-
+O AWS CloudFormation é um serviço que permite que o desenvolvedor aloque seus recursos AWS utilizando código. Dessa forma, o desenvolvedor consegue com apenas um arquivo provisionar toda a sua infraestrutura de nuvem necessária, ao invés de precisar configurar por outras formas menos práticas, como no console da AWS. Além disso, ele pode reutilizar esse código em outros contextos caso seja necessário.
 
 
 
