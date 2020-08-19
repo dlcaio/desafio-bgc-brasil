@@ -44,9 +44,7 @@ class Signin extends PureComponent {
 
 
             const current = await Auth.currentSession()
-            this.setState({
-                password: ''
-            })
+            
 
 
         } catch (error) {
@@ -59,10 +57,6 @@ class Signin extends PureComponent {
         }
         
     }
-
-
-
-
 
     render() {
         return (
