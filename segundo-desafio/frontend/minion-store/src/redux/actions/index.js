@@ -12,7 +12,7 @@ export function removeFromCart(id) {
 export const getMinions = () => {
     return async (dispatch) => {
         
-          const resp = await fetch("https://hp8igc55mi.execute-api.us-east-1.amazonaws.com/dev/query-minion")
+          const resp = await fetch("https://hp8igc55mi.execute-api.us-east-1.amazonaws.com/dev/available-minions")
           const respJson = await resp.json()
           return dispatch({type: "GET_MINIONS", payload: respJson})
       };

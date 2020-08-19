@@ -115,11 +115,11 @@ functions:
           method: post
           cors: true
   
-  queryMinion:
-    handler: queryMinion.queryMinion
+  scanAvailableMinions:
+    handler: scanAvailableMinions.scanAvailableMinions
     events:
       - http:
-          path: query-minion
+          path: available-minions
           method: get
           cors: true
 
