@@ -1,125 +1,73 @@
 'use strict';
 
 const dynamodb = require('./dynamodb');
-
 const ses = require('./ses');
 
 module.exports.book = async event => {
-  
-
-
 
   const data = JSON.parse(event.body)
 
-  const dataList = data['Minions']
+  // get minions array and user information
+  const minionsArr = data['Minions']
+  const userId = data['UserId']
+  const userEmail = data['UserEmail']
 
-  const minions = []
-  console.log(dataList)
-  dataList.forEach(minion => {
-    console.log(minion)
-    minions.push({
+  const minionsParams = []
+
+  // add info related to each minion to execute put request
+  minionsArr.forEach(minion => {
+    minionsParams.push({
         PutRequest: {
             Item: {
                 booked: true,
                 minionId: minion.minionId,
-                UserId: data['UserId'],
-                UserEmail: data['UserEmail'],
+                UserId: userId,
+                UserEmail: userEmail,
                 name: minion.name,
                 description: minion.description
-
             }
         }
     })
   })
 
-
-
-  console.log(minions)
-
+  // add minions info with respect to minions table
   const params = {
     RequestItems: {
-        [process.env.MINIONS_TABLE]: minions
+        [process.env.MINIONS_TABLE]: minionsParams
     }
   };
 
 
+  // email content
   var minionsDiv = ''
-  minions.map(minion => {
+  minionsArr.map(minion => {
     minionsDiv +=
-    '<h2>Nome: ' + minion.PutRequest.Item.name + '</h2>' + '<h3>Descrição: ' + minion.PutRequest.Item.name + '</h3>'
+    '<h2>Nome: ' + minion.name
+    + '</h2>' + '<h3>Descrição: ' + minion.description + '</h3>'
   })
 
   var emailLayout = (
     `<!DOCTYPE html><html><head></head><body><h1>Obrigado pela reserva!</h1><h4>Você reservou o(s) minion(s):</h4> ${minionsDiv} <h4>Aproveite seus minions : )</h4></body></html>`)
 
-  console.log(data['UserEmail'])
-  var emailParams = {
+  const emailParams = {
         Destination: {
-            ToAddresses: [data['UserEmail'], "thiago@bgcbrasil.com.br"]
+            ToAddresses: [userEmail, "thiago@bgcbrasil.com.br"]
         },
         Message: {
             Body: {
-                Html: { Data: emailLayout
-                  
-                }
-                
+                Html: { Data: emailLayout }
             },
             
-            Subject: { Data: "Sua reserva na Minions Store"
-                
-            }
+            Subject: { Data: "Sua reserva na Minions Store" }
         },
         Source: "caiodellalibera@id.uff.br"
     };
 
-    
-
-
-
-
-
-
-
-
-
-
-  
-
-  /*
-
     try {
         const respData = await dynamodb.batchWrite(params).promise()
-        const code = 200
-        const body = JSON.stringify(params.Item)
-        return {
-            statusCode: code,
-            body: '',
-            headers: {
-              'Access-Control-Allow-Origin': '*',
-              'Access-Control-Allow-Credentials': true,
-            }
-          }
-    } catch (err) {
-        const code = 501
-        const body = {error: err}
-        return {
-            statusCode: code,
-            body: body,
-            headers: {
-              'Access-Control-Allow-Origin': '*'
-            }
-          }
-    }
-  */
 
-  //minions.forEach(minion => {
-    try {
-        const respData = await dynamodb.batchWrite(params).promise()
         try {
-          
-          const emailResp = await ses.sendEmail(emailParams).promise()
-          console.log(emailResp)
-    
+          const emailResp = await ses.sendEmail(emailParams).promise()    
         } catch (err) {
           console.log(err)
         }
@@ -148,7 +96,4 @@ module.exports.book = async event => {
           }
         }
     }
- // })
-    
-
 }
