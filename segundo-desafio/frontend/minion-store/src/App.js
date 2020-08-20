@@ -56,7 +56,6 @@ class App extends React.Component {
         <h4 className='MinionsInstruct2'>
           Depois é só clicar no botão "Reservar Minion(s)!"<br/>e correr pro abraço : )
         </h4>
-      
         {<Minions/>}
     </div>
   );

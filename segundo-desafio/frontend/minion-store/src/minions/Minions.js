@@ -19,7 +19,7 @@ class Minions extends Component {
     }
 
     componentDidMount() {
-        this.props.getMinions();
+        //this.props.getMinions();
 
       }
 
@@ -39,35 +39,37 @@ class Minions extends Component {
 
 
     render() {
-        const minions = this.props.minions
-        
+        //const minions = this.props.minions
+        const minions = [0, 1, {onCart: true}, 4, 5, 6]
         return (
             <div>
             {minions.length !== 0 ? (
              <div>
-                <ul className='Minions'>
+                <div className='Minions'>
                 
                 {minions.map(minion => (
-                <div className='MinionColumn' key={minion.minionId}>
+                <div key={minion.minionId}>
                     {!minion.onCart ? (<div className='Minion'>
-                        <li>{minion.name}</li>
-                        <p>{minion.description}</p>
+                        <li>minion.name</li>
+                        <p>minion.desaefaefaefaefaefeafaefaefaefaeaefeafaefeafaefeafaefeafeafaefaefaefeafaefeafaefeafaefeafaefaefeafaecription</p>
                         
                         <img onClick={() => (this.props.addToCart(minion.minionId))}  className='minionImage' src={require('../minion.png')}></img>
 
-                </div>) : (
-                            <div className='Minion'>
-                            <li>{minion.name}</li>
-                            <p>{minion.description}</p>
-                            <img onClick={() => (this.props.removeFromCart(minion.minionId))}  className='minionImage' src={require('../minion-cart.png')}></img>
-    
-                            </div>
+                </div>
+                ) : (
+                <div className='Minion'>
+                        <li>minion.name</li>
+                        <p>minion.</p>
+                        
+                        <img onClick={() => (this.props.removeFromCart(minion.minionId))}  className='minionImage' src={require('../minion-cart.png')}></img>
+
+                </div>
                         )}
                 </div>
                 ))}
                 
                 
-            </ul>
+            </div>
             <p className='Alert'>{this.state.message}</p>
             <button className='buttonBook' onClick={this.book}>Reservar Minion(s)!</button></div>
             ) : (
