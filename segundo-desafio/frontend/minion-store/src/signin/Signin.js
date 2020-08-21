@@ -66,8 +66,13 @@ class Signin extends PureComponent {
         <form className='Sign' onSubmit={this.signIn}>
 
             <input placeholder='e-mail' onChange={this.handleInputChange} value={this.state.user} name='user' type='email'/>
+
             <input placeholder='senha' onChange={this.handleInputChange} value={this.state.password} name='password' type='password'/>
+
+
             <button className='ButtonSubmit' disabled={this.state.disable}>Entre!</button>
+
+
             <p className='AlertLeft'>{this.state.message}</p>
         </form>
                 

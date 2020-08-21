@@ -19,7 +19,7 @@ class Minions extends Component {
     }
 
     componentDidMount() {
-        //this.props.getMinions();
+        this.props.getMinions();
 
       }
 
@@ -39,8 +39,7 @@ class Minions extends Component {
 
 
     render() {
-        //const minions = this.props.minions
-        const minions = [0, 1, {onCart: true}, 4, 5, 6]
+        const minions = this.props.minions
         return (
             <div>
             {minions.length !== 0 ? (
@@ -50,28 +49,28 @@ class Minions extends Component {
                 {minions.map(minion => (
                 <div key={minion.minionId}>
                     {!minion.onCart ? (<div className='Minion'>
-                        <li>minion.name</li>
-                        <p>minion.desaefaefaefaefaefeafaefaefaefaeaefeafaefeafaefeafaefeafeafaefaefaefeafaefeafaefeafaefeafaefaefeafaecription</p>
+                        <li>{minion.name}</li>
+                        <p>{minion.description}</p>
                         
                         <img onClick={() => (this.props.addToCart(minion.minionId))}  className='minionImage' src={require('../minion.png')}></img>
 
                 </div>
                 ) : (
                 <div className='Minion'>
-                        <li>minion.name</li>
-                        <p>minion.</p>
-                        
+                        <li>{minion.name}</li>
+                        <p>{minion.description}</p>
+
                         <img onClick={() => (this.props.removeFromCart(minion.minionId))}  className='minionImage' src={require('../minion-cart.png')}></img>
 
                 </div>
                         )}
                 </div>
-                ))}
                 
+                ))}
                 
             </div>
             <p className='Alert'>{this.state.message}</p>
-            <button className='buttonBook' onClick={this.book}>Reservar Minion(s)!</button></div>
+            <button className='ButtonBook' onClick={this.book}>Reservar Minion(s)!</button></div>
             ) : (
                 <h3 className='MinionsUnavalable'>Poxa, não há minions disponíveis no momento<br/>: /</h3>
             )}
