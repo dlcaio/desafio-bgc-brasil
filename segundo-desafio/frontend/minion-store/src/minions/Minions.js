@@ -25,13 +25,24 @@ class Minions extends Component {
 
 
     book = async () => {
-        this.props.credentials === '' ? 
-        (this.setState({message: 'Faça login antes de realizar a reserva : )'})) : (
-            
-            this.props.bookMinions({'Minions': this.props.minions.filter(minion => {
-                return minion.onCart === true
-            }), 'UserId': this.props.credentials.username, 'UserEmail': (this.props.credentials.signInUserSession.idToken.payload.email)})
-        )
+        const minionsOnCart = this.props.minions.filter(minion => {
+            return minion.onCart === true
+        })
+        if(minionsOnCart.length !== 0){
+            this.props.credentials === '' ? (
+                this.setState({message: 'Faça login antes de realizar a reserva : )'})
+                ) : (
+                        this.props.bookMinions({
+                            'Minions': minionsOnCart,
+                            'UserId': this.props.credentials.username,
+                            'UserEmail': this.props.credentials.signInUserSession.idToken.payload.email
+                        })
+        
+                    )
+        } else {
+            this.setState({message: 'Não esquece de selecionar seus minions primeiro : )'})
+        }
+        
         
     }
 
